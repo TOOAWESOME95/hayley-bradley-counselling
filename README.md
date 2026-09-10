@@ -37,7 +37,7 @@ These were locked in as reasonable defaults per the brief, flagged here so nothi
 2. **Contact form handler** (`contact.html`, `<form action="https://formspree.io/f/YOUR_FORM_ID">`)
    This is a static site with no backend, so the form posts to **Formspree** (a static-friendly form-processing service) as specified in the brief. **Decision flagged:** if you'd prefer a different provider (e.g. Netlify Forms, Basin, GetForm), swap the `action` URL and, if needed, the field names - the current markup uses plain `name`/`email`/`phone`/`topic`/`message`/`consent` fields, which most static form services accept as-is. Until a real form ID is set, `js/main.js` shows an inline notice instead of silently failing.
 
-3. **Domain & email** - footer and contact page use the placeholder `hello@hayleybradleycounselling.co.uk`. Update every occurrence (search the HTML files) once the real domain is registered, and add a `CNAME` file for GitHub Pages as above. `robots.txt` and `sitemap.xml` also reference this placeholder domain.
+3. **Domain & email** - the site is now live at `hayley.justblame-mike.com` (GitHub Pages custom domain, `CNAME` file in repo root, HTTPS certificate approved and enforced). `robots.txt` and `sitemap.xml` point at this domain. The footer/contact email is still the placeholder `hello@hayleybradleycounselling.co.uk` - update every occurrence (search the HTML files) once a real inbox address is decided.
 
 4. **Photography** - the hero, about, and portrait areas currently use soft line-art SVG (matching the leaf-in-circle logo motif) instead of photos, since none were supplied. Drop real images into `assets/img/` and swap the relevant `.hero-art`, `.portrait-frame` markup in `index.html` / `about.html` when available.
 
