@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hayleybradleycounselling.co.uk/sitemap.xml
+Sitemap: https://hayley.justblame-mike.com/sitemap.xml
