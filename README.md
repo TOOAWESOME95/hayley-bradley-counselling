@@ -9,9 +9,9 @@ index.html          Home
 about.html           About Me
 services.html        Services / Areas of Support
 testimonials.html    Testimonials (placeholder content)
-contact.html         Contact + GDPR form + Calendify booking widget
+contact.html         Contact + GDPR form + Calendly booking widget
 css/style.css        All styling (CSS custom properties for the brand palette)
-js/main.js           Nav toggle, scroll reveal, form + Calendify fallbacks
+js/main.js           Nav toggle, scroll reveal, form + Calendly loader
 assets/icons/        Logo motif + 6 hand-drawn line icons (SVG)
 assets/img/          Reserved for real photography once supplied
 robots.txt, sitemap.xml   Basic SEO (update the domain once confirmed)
@@ -30,9 +30,9 @@ No build step is required - GitHub Pages serves the HTML/CSS/JS as-is.
 
 These were locked in as reasonable defaults per the brief, flagged here so nothing ships by accident:
 
-1. **Calendify booking widget** (`contact.html`, near `id="book"`)
-   `data-calendify="YOUR_CALENDIFY_USERNAME/YOUR_EVENT_TYPE"` - replace with the real username/event slug once the Calendify account exists. Until then, `js/main.js` swaps in a friendly "booking coming soon" message instead of a broken embed.
-   The widget is themed via CSS custom properties in `.booking-embed-shell` in `css/style.css` (`--cf-primary`, `--cf-radius`, etc.) to match the sage/cream brand - adjust there if Calendify's supported property names differ from what's assumed here.
+1. **Calendly booking widget** (`contact.html`, near `id="book"`)
+   Visitors pick **Free initial consultation (20 min)** or **Counselling session (1 hour, paid)**, then **Online** or **Face to face**, and `js/main.js` loads the matching Calendly event. The four links are the `data-calendly-<type>-<format>` attributes on `.booking-calendar` - edit those if an event's URL changes. Online events use Google Meet; face-to-face events say the location is shared by email after booking.
+   `js/main.js` adds Calendly's colour parameters to match the sage/cream brand; Calendly only applies these on paid plans, so on the free plan the calendar uses Calendly's default colours.
 
 2. **Contact form handler** (`contact.html`, `<form action="https://formspree.io/f/YOUR_FORM_ID">`)
    This is a static site with no backend, so the form posts to **Formspree** (a static-friendly form-processing service) as specified in the brief. **Decision flagged:** if you'd prefer a different provider (e.g. Netlify Forms, Basin, GetForm), swap the `action` URL and, if needed, the field names - the current markup uses plain `name`/`email`/`phone`/`topic`/`message`/`consent` fields, which most static form services accept as-is. Until a real form ID is set, `js/main.js` shows an inline notice instead of silently failing.

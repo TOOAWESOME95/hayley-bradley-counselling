@@ -146,7 +146,7 @@
                   </li>
                   <li>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>
-                    <span><strong>Step 2 -</strong> We'll arrange a short initial conversation to see if we're a good fit.</span>
+                    <span><strong>Step 2 -</strong> We'll have a free initial consultation to see if we're a good fit.</span>
                   </li>
                   <li>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 4 6.5 4c2 0 3.3 1 4 2 .7-1 2-2 4-2 4 0 6 4.5 4 8.5C19 16.65 12 21 12 21Z"/></svg>
@@ -163,17 +163,72 @@
           <div class="section-header center">
             <span class="eyebrow">Book Online</span>
             <h2>Choose a Time That Works for You</h2>
-            <p>The calendar below shows live availability and confirms your booking instantly.</p>
+            <p>Start with a free initial consultation - a relaxed, no-obligation 20-minute chat to see whether working together feels right. We'll talk about fees after that. Each counselling session is a one-hour booking, with 50 minutes of therapeutic time.</p>
+          </div>
+          <div class="booking-options" id="booking-options">
+            <fieldset class="booking-choice">
+              <legend>What would you like to book?</legend>
+              <div class="choice-pills">
+                <label class="choice-pill">
+                  <input type="radio" name="booking-type" value="consultation" checked />
+                  <span><strong>Free initial consultation</strong><small>20 minutes &middot; no charge</small></span>
+                </label>
+                <label class="choice-pill">
+                  <input type="radio" name="booking-type" value="session" />
+                  <span><strong>Counselling session</strong><small>1 hour &middot; paid</small></span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="booking-choice">
+              <legend>How would you like to meet?</legend>
+              <div class="choice-pills">
+                <label class="choice-pill">
+                  <input type="radio" name="booking-format" value="online" checked />
+                  <span><strong>Online</strong><small>Secure video call</small></span>
+                </label>
+                <label class="choice-pill">
+                  <input type="radio" name="booking-format" value="face-to-face" />
+                  <span><strong>Face to face</strong><small>In person</small></span>
+                </label>
+              </div>
+            </fieldset>
           </div>
           <div class="booking-embed-shell">
             <div class="booking-embed-inner">
-              <div data-calendify="YOUR_CALENDIFY_USERNAME/YOUR_EVENT_TYPE"></div>
+              <div class="booking-calendar"
+                data-calendly-consultation-online="https://calendly.com/michaelmelia1995/free-initial-consultation-online"
+                data-calendly-consultation-face-to-face="https://calendly.com/michaelmelia1995/free-initial-consultation-face-to-face"
+                data-calendly-session-online="https://calendly.com/michaelmelia1995/counselling-session-online"
+                data-calendly-session-face-to-face="https://calendly.com/michaelmelia1995/counselling-session-face-to-face"></div>
             </div>
           </div>
-          <script src="https://calendify.ai/embed.js" async></script>
-          <p class="form-hint" style="text-align:center; margin-top:1rem;">
-            Booking decision point: the Calendify widget above is theme-matched to the site's sage/cream palette via its <code>--cf-*</code> CSS custom properties, and the <code>data-calendify</code> value is a placeholder - replace <code>YOUR_CALENDIFY_USERNAME/YOUR_EVENT_TYPE</code> with your real Calendify username and event slug once your account is set up.
-          </p>
+        </div>
+
+        <!-- DEMO location: change the address text, the map src "q=" and the directions "destination=" to the real address -->
+        <div class="visit" id="location">
+          <div class="visit-map">
+            <iframe
+              title="Map showing where face-to-face sessions with Hayley Bradley take place"
+              src="https://maps.google.com/maps?q=Piccadilly+Gardens,+Manchester&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="visit-note">
+            <h2>Come and find me</h2>
+            <p class="visit-intro">If you'd rather talk in person, face-to-face sessions are held in a calm, confidential space. Walking through the door for the first time can feel like a big step, so here's what to expect.</p>
+            <address class="visit-address">
+              <strong>Hayley Bradley Counselling</strong>
+              Piccadilly Gardens, Manchester M1 1RG
+            </address>
+            <ul class="visit-tips">
+              <li>Visits are by appointment, so book a time above before you come.</li>
+              <li>Arrive a few minutes early if you can and take a breath. There's no rush.</li>
+              <li>Can't find me on the day? Call <a href="tel:07858499677">07858 499677</a>.</li>
+            </ul>
+            <p class="visit-sign">See you soon, <span>Hayley</span></p>
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Piccadilly+Gardens,+Manchester" target="_blank" rel="noopener">Get directions <span class="btn-icon" aria-hidden="true">→</span></a>
+            <p class="visit-demo">Demo location, to be replaced with the real address.</p>
+          </div>
         </div>
       </div>
     </section>

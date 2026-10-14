@@ -108,17 +108,46 @@
     });
   }
 
-  /* Calendify embed: friendly fallback if the placeholder hasn't been swapped yet */
-  var calendifyEl = document.querySelector("[data-calendify]");
-  if (calendifyEl) {
-    var value = calendifyEl.getAttribute("data-calendify") || "";
-    if (value.indexOf("YOUR_CALENDIFY_USERNAME") !== -1) {
-      var fallback = document.createElement("div");
-      fallback.className = "booking-fallback";
-      fallback.innerHTML =
-        "Online booking will appear here once the Calendify account is connected.<br>" +
-        "(Swap <code>data-calendify=\"" + value + "\"</code> in contact.html with your real username/event slug.)";
-      calendifyEl.replaceWith(fallback);
+  /* Calendly embed: shows the calendar matching the chosen booking type + format
+     (links live in data-calendly-<type>-<format> attributes on the widget) */
+  var calendlyEl = document.querySelector(".booking-calendar");
+  if (calendlyEl) {
+    var options = document.getElementById("booking-options");
+    var chosen = function (name) {
+      var input = options && options.querySelector('input[name="' + name + '"]:checked');
+      return input ? input.value : "";
+    };
+    var currentUrl = function () {
+      var url = calendlyEl.getAttribute(
+        "data-calendly-" + (chosen("booking-type") || "consultation") + "-" + (chosen("booking-format") || "online")
+      ) || "";
+      if (url.indexOf("calendly.com/") === -1) return "";
+      // match the calendar to the site palette (colour options apply on paid Calendly plans)
+      return url + (url.indexOf("?") === -1 ? "?" : "&") +
+        "hide_gdpr_banner=1&background_color=f6f1e6&text_color=2c3126&primary_color=566041";
+    };
+    var showFallback = function () {
+      calendlyEl.innerHTML =
+        '<div class="booking-fallback">Online booking is coming soon. In the meantime, please send a message above ' +
+        "and I'll get back to you to arrange your free initial consultation.</div>";
+    };
+    var renderCalendar = function () {
+      var url = currentUrl();
+      if (!url) return showFallback();
+      if (!window.Calendly) return; // script still loading; it renders on load
+      calendlyEl.innerHTML = "";
+      window.Calendly.initInlineWidget({ url: url, parentElement: calendlyEl });
+    };
+
+    if (!currentUrl()) {
+      showFallback();
+    } else {
+      var calendlyScript = document.createElement("script");
+      calendlyScript.src = "https://assets.calendly.com/assets/external/widget.js";
+      calendlyScript.async = true;
+      calendlyScript.onload = renderCalendar;
+      document.body.appendChild(calendlyScript);
     }
+    if (options) options.addEventListener("change", renderCalendar);
   }
 })();
