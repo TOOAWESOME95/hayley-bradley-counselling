@@ -974,3 +974,7 @@ section { padding-block: var(--section-pad); }
 .page-hero .eyebrow { margin-inline: auto; }
 .page-hero h1 { max-width: 22ch; margin-inline: auto; }
 .page-hero p.lede { max-width: 50ch; margin-inline: auto; color: var(--charcoal-soft); font-size: 1.1rem; }
+
+/* Message form sits below the booking calendar on the contact page */
+.message-panel { margin-top: clamp(4rem, 8vw, 6.5rem); }
+.booking-panel:first-child { margin-top: 0; }
